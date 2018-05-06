@@ -1,11 +1,12 @@
 ---
 layout: page
-title: About
+title: Sobre
 permalink: /about/
 ---
 
-Atualmente estudante no curso de ciência da computação da Universidade Federal do Tocantins 
+Graduado em ciência da computação pela Universidade Federal do Tocantins. 
 
 
-
+contato:
+[carlos-henrique-ml@hotmail.com](mailto:carlos-henrique-ml@hotmail.com)
 [hen9@ymail.com](mailto:hen9@ymail.com)
