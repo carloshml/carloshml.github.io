@@ -17,12 +17,13 @@ avatar: https://1.bp.blogspot.com/-aWttsJPaCbA/Wu-MzZ0NaXI/AAAAAAAAR_A/JZjlFt2y_
 
 # Includes an icon in the footer for each username you enter
 footer-links:
-  dribbble:
+  #dribbble:
+  linkedin: https://www.linkedin.com/in/carlos-lima-103b83218/ 
   email: hen9@ymail.com 
-  facebook: /carloscasca
+  #facebook: /carloscasca
   flickr: /carlos_casca
   github: carloshml
-  instagram: /carlos_casca
+  instagram: carlos_casca
  # linkedin: 
  # pinterest:
  # rss: # just type anything here for a working RSS icon, make sure you set the "url" above!

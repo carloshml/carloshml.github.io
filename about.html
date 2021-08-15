@@ -1,0 +1,165 @@
+---
+layout: page
+title: Um Pouco Sobre mim
+permalink: /about/
+---
+
+<style type="text/css" media="screen">
+    legend {
+      opacity:0 ;
+      margin-left: 8% ;
+      transition: all 1s;
+      background: none;     
+      animation: animacao-1 3s;
+    }    
+
+    @keyframes animacao-1 {
+        from {margin-left: 0; opacity:0 ; }
+        to {margin-left: 8%;  opacity:1 ;}
+    }
+
+    .aaaa-0{    animation-delay: 0.3s;    }
+    .aaaa-1{    animation-delay: .6;    }
+    .aaaa-2{    animation-delay: .9s;    }
+    .aaaa-3{    animation-delay: 1.2s;    }
+    .aaaa-4{    animation-delay: 1.5s;    }
+    .aaaa-5{    animation-delay: 1.8s;    }
+    .aaaa-6{    animation-delay: 2.1s;    }
+
+    fieldset{
+      margin: 8px 0;
+      border: 1px solid white;
+    }
+
+    fieldset:hover  {
+      border: 1px solid gray;
+    }   
+
+    fieldset:hover legend {
+      margin-left: 15% ;    
+    }  
+    .detalhes{
+        opacity:0 ;
+        animation: animacao-2 3s;   
+        animation-delay: 4s;     
+    } 
+
+    @keyframes animacao-2 {
+        from {  opacity:0 ; }
+        to {   opacity:1 ;}
+    }
+
+    .container-1 {       
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;      
+    }
+
+    .row {
+        flex-direction: row;
+    }
+
+    .item {
+    /* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
+        flex: 1;
+        margin: 5px;
+        border-bottom: 3px solid #ffd9b8;
+        border-radius: 20%;
+        text-align: center;        
+        color: #867f7f;
+        font-weight: bold;
+    }
+     
+</style>
+<script>
+  setTimeout(() => {  
+   const legendas =   document.querySelectorAll("legend");   
+    
+    legendas.forEach(legenda=>{
+        legenda.style.opacity = 1;
+    });  
+  }, 2000);
+
+  setTimeout(() => {  
+    const detalhes =   document.querySelectorAll(".detalhes"); 
+        detalhes.forEach(detalhe=>{
+            detalhe.style.opacity = 1;
+        });
+    }, 4200);
+
+
+</script>
+<section>
+    <p>
+        Sou graduado em Ciência da Computação, pela Universidade Federal do Tocantins.
+        Acredito que tecnologia é feita por pessoas e para pessoas, então acho importante o trabalho em equipe e a comunicação.
+    </p>
+    <p>
+        Atualmente trabalho como Full-Stack usando Java e Angular. 
+        Possuo experiência com linguagens back-end, como PHP e Java, usando para construção de APIs. No front-end já tenho experiência de 3 anos usando Angular.
+    </p>
+    <p>
+        Trabalho com diversos bancos de dados, gosto de Design Pattern e metodologias ágeis.
+        Como todo profissional de T.I. gosto muito de descobrir novidades e procuro me aprofundar nas tecnologias que me são mais necessárias no momento.
+    </p>
+</section>
+<section >
+    <h4>Soft skills</h4>
+    <div class="container-1 row" >
+        <h5 class="item"  >
+            Autodidata
+        </h5>
+        <h5 class="item"  >
+            Comunicativo
+        </h5>
+        <h5 class="item"  >
+            Empenhado
+        </h5>      
+    </div>
+</section>   
+
+<section>
+    <h4>Skills</h4>
+    <fieldset  >
+        <legend  class="aaaa-0">JAVA/Javax rs/JavaFx/Java Swing</legend>
+    </fieldset>
+    <fieldset   >
+        <legend  class="aaaa-1">REST/API/JSON</legend>
+    </fieldset>
+    <fieldset   >
+        <legend  class="aaaa-2">JavaScript/Angular</legend>
+    </fieldset>
+    <fieldset   >
+        <legend  class="aaaa-3">IONIC</legend>
+    </fieldset>
+    <fieldset   >
+        <legend  class="aaaa-4">HTML/CSS</legend>
+    </fieldset>    
+
+</section>
+<section>
+    <h4>Experiência:</h4>
+    <fieldset  >
+        <legend class="aaaa-5">qAtive Tecnologia</legend>
+        <div class="detalhes" >
+           07/2017   -   09/2017  
+        </div>
+    </fieldset>  
+    <fieldset  >
+        <legend class="aaaa-6">ViaTech Informática</legend>
+        <div class="detalhes" >
+            10/2017   - HOJE 
+        </div>
+    </fieldset>     
+</section>
+<hr>
+<footer>
+    contato:
+    <div>
+        <a href="mailto:carlos-henrique-ml@hotmail.com">carlos-henrique-ml@hotmail.com</a>
+    </div>
+    <div>   
+        <a href="mailto:hen9@ymail.com">hen9@ymail.com</a>
+    </div>
+</footer>
+ 
