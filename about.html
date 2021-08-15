@@ -8,7 +8,7 @@ permalink: /about/
     legend {
       opacity:0 ;
       margin-left: 8% ;
-      transition: all 1s;
+      transition: all 1.5s;
       background: none;     
       animation: animacao-1 3s;
     }    
@@ -25,6 +25,7 @@ permalink: /about/
     .aaaa-4{    animation-delay: 1.5s;    }
     .aaaa-5{    animation-delay: 1.8s;    }
     .aaaa-6{    animation-delay: 2.1s;    }
+    .aaaa-7{    animation-delay: 2.3s;    }
 
     fieldset{
       margin: 8px 0;
@@ -42,6 +43,12 @@ permalink: /about/
         opacity:0 ;
         animation: animacao-2 3s;   
         animation-delay: 4s;     
+    } 
+
+    .detalhes-idiomas{
+        opacity:0 ;
+        animation: animacao-2 3s;   
+        animation-delay: 4.3s;     
     } 
 
     @keyframes animacao-2 {
@@ -78,7 +85,7 @@ permalink: /about/
     legendas.forEach(legenda=>{
         legenda.style.opacity = 1;
     });  
-  }, 2000);
+  }, 2100);
 
   setTimeout(() => {  
     const detalhes =   document.querySelectorAll(".detalhes"); 
@@ -86,6 +93,15 @@ permalink: /about/
             detalhe.style.opacity = 1;
         });
     }, 4200);
+
+    setTimeout(() => {  
+    const detalhes =   document.querySelectorAll(".detalhes-idiomas"); 
+        detalhes.forEach(detalhe=>{
+            detalhe.style.opacity = 1;
+        });
+    }, 4400);
+
+   
 
 
 </script>
@@ -150,6 +166,15 @@ permalink: /about/
         <div class="detalhes" >
             10/2017   - HOJE 
         </div>
+    </fieldset>     
+</section>
+<section id="idiomas">
+    <h4>Idiomas:</h4>
+    <fieldset  >
+        <legend class="aaaa-6">Alemão: Fluente</legend>        
+    </fieldset>  
+    <fieldset  >
+        <legend class="aaaa-7">Inglês : Fluente</legend>  
     </fieldset>     
 </section>
 <hr>
