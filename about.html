@@ -5,61 +5,53 @@ permalink: /about/
 ---
 
 <style type="text/css" media="screen">
-    legend {
-      opacity:0 ;
-      margin-left: 8% ;
-      transition: all 1.5s;
-      background: none;     
-      animation: animacao-1 3s;
-    }    
+    .animation {
+        opacity: 0;
+        margin-left: 8%;
+        transition: all 1.5s;
+        background: none;
+    }
+
+    .com-animacao {
+        animation: animacao-1 2s;
+    }
 
     @keyframes animacao-1 {
-        from {margin-left: 0; opacity:0 ; }
-        to {margin-left: 8%;  opacity:1 ;}
+        from {
+            margin-left: 0;
+            opacity: 0;
+        }
+
+        to {
+            margin-left: 8%;
+            opacity: 1;
+        }
     }
 
-    .aaaa-0{    animation-delay: 0.3s;    }
-    .aaaa-1{    animation-delay: .6;    }
-    .aaaa-2{    animation-delay: .9s;    }
-    .aaaa-3{    animation-delay: 1.2s;    }
-    .aaaa-4{    animation-delay: 1.5s;    }
-    .aaaa-5{    animation-delay: 1.8s;    }
-    .aaaa-6{    animation-delay: 2.1s;    }
-    .aaaa-7{    animation-delay: 2.3s;    }
-
-    fieldset{
-      margin: 8px 0;
-      border: 1px solid white;
+    fieldset {
+        margin: 8px 0;
+        border: 1px solid white;
     }
 
-    fieldset:hover  {
-      border: 1px solid gray;
-    }   
-
-    fieldset:hover legend {
-      margin-left: 15% ;    
-    }  
-    .detalhes{
-        opacity:0 ;
-        animation: animacao-2 3s;   
-        animation-delay: 4s;     
-    } 
-
-    .detalhes-idiomas{
-        opacity:0 ;
-        animation: animacao-2 3s;   
-        animation-delay: 4.3s;     
-    } 
+    .detalhes {
+        opacity: 0;
+        animation: animacao-2 2s;
+    }
 
     @keyframes animacao-2 {
-        from {  opacity:0 ; }
-        to {   opacity:1 ;}
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
-    .container-1 {       
+    .container-1 {
         margin: 0 auto;
         display: flex;
-        flex-wrap: wrap;      
+        flex-wrap: wrap;
     }
 
     .row {
@@ -67,115 +59,151 @@ permalink: /about/
     }
 
     .item {
-    /* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
+        /* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
         flex: 1;
         margin: 5px;
         border-bottom: 3px solid #ffd9b8;
         border-radius: 20%;
-        text-align: center;        
+        text-align: center;
         color: #867f7f;
         font-weight: bold;
     }
-     
 </style>
 <script>
-  setTimeout(() => {  
-   const legendas =   document.querySelectorAll("legend");   
-    
-    legendas.forEach(legenda=>{
-        legenda.style.opacity = 1;
-    });  
-  }, 2100);
+    document.addEventListener("DOMContentLoaded", function () {
+        const animacoes = document.querySelectorAll(".animation");
+        for (let index = 0; index < animacoes.length; index++) {
+            animacoes[index].classList.add("animation-" + index);
+            animacoes[index].classList.remove("com-animacao");
+            animacoes[index].style.display = 'none';
+        }
+        const observer = new IntersectionObserver(entries => {
+            
+            let tempo = 0.3;
+            const periodoTempo = 1;
+            for (let index = 0; index < animacoes.length; index++) {
+                animacoes[index].style.display = 'block';
+                animacoes[index].classList.add("com-animacao");
+              
+                const elememto = document.querySelectorAll(".animation-" + index);
+                tempo += periodoTempo;
+                elememto[0].style.animationDelay = `${tempo}s`;
+                setTimeout(() => {
+                    animacoes[index].style.opacity = 1;
+                }, tempo * 1000);
+                if (index === 5) {
+                    const detalhes = document.querySelectorAll(".detalhes");
 
-  setTimeout(() => {  
-    const detalhes =   document.querySelectorAll(".detalhes"); 
-        detalhes.forEach(detalhe=>{
-            detalhe.style.opacity = 1;
+                    let count = tempo;
+                    for (const iterator of detalhes) {
+                        iterator.style.animationDelay = `${count}s`;
+                        setTimeout(() => {
+                            iterator.style.opacity = 1;
+                        }, (count + 1) * 1000);
+                        count++;
+                    }
+                }
+            }
+
+            observer.disconnect();
         });
-    }, 4200);
-
-    setTimeout(() => {  
-    const detalhes =   document.querySelectorAll(".detalhes-idiomas"); 
-        detalhes.forEach(detalhe=>{
-            detalhe.style.opacity = 1;
-        });
-    }, 4400);
-
-   
-
-
+        observer.observe(animacoes[0]);
+       
+    });
 </script>
 <section>
     <p>
         Sou graduado em Ciência da Computação, pela Universidade Federal do Tocantins.
-        Acredito que tecnologia é feita por pessoas e para pessoas, então acho importante o trabalho em equipe e a comunicação.
+        Acredito que tecnologia é feita por pessoas e para pessoas, então acho importante o trabalho em equipe e a
+        comunicação.
     </p>
     <p>
-        Atualmente trabalho como Full-Stack usando Java e Angular. 
-        Possuo experiência com linguagens back-end, como PHP e Java, usando para construção de APIs. No front-end já tenho experiência de 3 anos usando Angular.
+        Atualmente trabalho como Full-Stack usando Java e Angular.
+        Possuo experiência com linguagens back-end, como PHP e Java, usando para construção de APIs. No front-end já
+        tenho experiência de 7 anos usando Angular.
     </p>
     <p>
         Trabalho com diversos bancos de dados, gosto de Design Pattern e metodologias ágeis.
-        Como todo profissional de T.I. gosto muito de descobrir novidades e procuro me aprofundar nas tecnologias que me são mais necessárias no momento.
+        Como todo profissional de T.I. gosto muito de descobrir novidades e procuro me aprofundar nas tecnologias que me
+        são mais necessárias no momento.
     </p>
 </section>
-<section >
+<section>
     <h4>Soft skills</h4>
-    <div class="container-1 row" >
-        <h5 class="item"  >
+    <div class="container-1 row">
+        <h5 class="item">
             Autodidata
         </h5>
-        <h5 class="item"  >
+        <h5 class="item">
             Comunicativo
         </h5>
-        <h5 class="item"  >
+        <h5 class="item">
             Empenhado
-        </h5>      
+        </h5>
     </div>
-</section>   
+</section>
 
 <section>
     <h4>Skills</h4>
-    <fieldset  >
-        <legend  class="aaaa-0">JAVA/Javax rs/JavaFx/Java Swing</legend>
+    <fieldset>
+        <legend class="animation ">JAVA/Javax rs/Spring</legend>
     </fieldset>
-    <fieldset   >
-        <legend  class="aaaa-1">REST/API/JSON</legend>
+    <fieldset>
+        <legend class="animation ">REST/API/JSON</legend>
     </fieldset>
-    <fieldset   >
-        <legend  class="aaaa-2">JavaScript/Angular</legend>
+    <fieldset>
+        <legend class="animation ">JavaScript/Angular</legend>
     </fieldset>
-    <fieldset   >
-        <legend  class="aaaa-3">IONIC</legend>
+    <fieldset>
+        <legend class="animation ">HTML/CSS</legend>
     </fieldset>
-    <fieldset   >
-        <legend  class="aaaa-4">HTML/CSS</legend>
-    </fieldset>    
 
 </section>
 <section>
     <h4>Experiência:</h4>
-    <fieldset  >
-        <legend class="aaaa-5">qAtive Tecnologia</legend>
-        <div class="detalhes" >
-           07/2017   -   09/2017  
+    <fieldset>
+        <legend class="animation ">
+            <strong> qAtive Tecnologia </strong>
+        </legend>
+        <div class="detalhes">
+            07/2017 - 09/2017
         </div>
-    </fieldset>  
-    <fieldset  >
-        <legend class="aaaa-6">ViaTech Informática</legend>
-        <div class="detalhes" >
-            10/2017   - HOJE 
+    </fieldset>
+    <fieldset>
+        <legend class="animation ">
+            <strong>ViaTech Informática</strong>
+        </legend>
+        <div class="detalhes">
+            10/2017 - 08/2021
         </div>
-    </fieldset>     
+    </fieldset>
+    <fieldset>
+        <legend class="animation ">
+            <strong>Capgemini</strong>
+        </legend>
+        <div class="detalhes">
+            09/2021 - 11/2022
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="animation ">
+            <strong>
+                Coopersystem
+            </strong>
+        </legend>
+        <div class="detalhes">
+            11/2022 - HOJE
+        </div>
+    </fieldset>
 </section>
 <section id="idiomas">
     <h4>Idiomas:</h4>
-    <fieldset  >
-        <legend class="aaaa-6">Alemão: Fluente</legend>        
-    </fieldset>  
-    <fieldset  >
-        <legend class="aaaa-7">Inglês : Fluente</legend>  
-    </fieldset>     
+    <fieldset>
+        <legend class="animation ">Alemão: Fluente</legend>
+    </fieldset>
+    <fieldset>
+        <legend class="animation ">Inglês : Fluente</legend>
+    </fieldset>
 </section>
 <hr>
 <footer>
@@ -183,8 +211,7 @@ permalink: /about/
     <div>
         <a href="mailto:carlos-henrique-ml@hotmail.com">carlos-henrique-ml@hotmail.com</a>
     </div>
-    <div>   
+    <div>
         <a href="mailto:hen9@ymail.com">hen9@ymail.com</a>
     </div>
 </footer>
- 
