@@ -45,15 +45,14 @@ EXPERIENCIAS = [
         "cargo": "Desenvolvedor Full Stack",
         "periodo": "junho de 2024 – atual",
         "topicos": [
-            "Manutenção e evolução de sistemas legados em Java/JSF, com foco em estabilidade e "
-            "continuidade operacional.",
-            "Evolução do SIMAP (distribuição de processos judiciais): motor de distribuição com "
-            "regras heurísticas e ponderação por vara e por categoria.",
-            "Migração da autenticação de usuários para RH-SSO (Keycloak).",
+            "Desenvolvimento do SIMAP (acompanhamento e distribuição de processos judiciais): "
+            "aplicação nova em Java 21, Spring Boot 3 e Angular 18 sobre JHipster, com regras "
+            "heurísticas de priorização por vara e por categoria.",
             "Integração entre as bases do SIMAP e do PJe para sincronização de processos, com "
             "Spring Batch e scripts SQL em PostgreSQL.",
-            "Desenvolvimento full-stack com Java/Spring e Angular (JHipster); uso diário de Kiro e "
-            "DeepSeek Harness.",
+            "Migração da autenticação de usuários para RH-SSO (Keycloak).",
+            "Manutenção de sistemas legados em Java/JSF em operação.",
+            "Uso diário de IDE agêntica (Kiro) e DeepSeek Harness no fluxo de desenvolvimento.",
         ],
     },
     {
