@@ -132,6 +132,40 @@ permalink: /about/
     margin: 0;
   }
 
+  /* Botao de download do curriculo em PDF */
+  .cv-download {
+    margin: 0 0 2.6em;
+  }
+
+  .cv-download a {
+    display: inline-block;
+    padding: .55em 1.1em;
+    border-radius: 6px;
+    background: #1f2937;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .cv-download a:hover,
+  .cv-download a:focus {
+    background: #111827;
+  }
+
+  .cv-download-note {
+    margin-left: .8em;
+    font-size: 14px;
+    color: var(--cv-muted);
+  }
+
+  @media screen and (max-width: 640px) {
+    .cv-download-note {
+      display: block;
+      margin: .5em 0 0;
+    }
+  }
+
   /* Reveal ao rolar.
      O conteudo so e escondido quando o JS esta ativo (classe reveal-active),
      para a pagina continuar legivel sem JS. Cada alvo (.reveal) e um bloco
@@ -292,8 +326,8 @@ permalink: /about/
     </p>
     <p class="reveal">
       Hoje atuo como desenvolvedor Full-Stack com <strong>Java</strong> e <strong>Angular</strong>:
-      construo APIs REST com Spring e JAX-RS, modelo e mantenho bancos de dados relacionais e
-      desenvolvo o front-end em Angular. Também tenho experiência com PHP, Laravel e Vue.
+      construo APIs REST com Spring e JAX-RS, trabalho com PostgreSQL e MySQL e desenvolvo o
+      front-end em Angular. Também tenho experiência com PHP, Laravel e Vue.
     </p>
     <p class="reveal">
       Uso <strong>IA no dia a dia de desenvolvimento</strong>: trabalho com IDEs agênticas e agentes
@@ -304,6 +338,11 @@ permalink: /about/
     </p>
   </section>
 
+  <p class="cv-download reveal">
+    <a href="/assets/Curriculo-Carlos-Lima.pdf" download>Baixar currículo em PDF</a>
+    <span class="cv-download-note">uma página · atualizado em outubro de 2026</span>
+  </p>
+
   <section>
     <h2 class="reveal">Skills</h2>
 
@@ -311,10 +350,12 @@ permalink: /about/
       <h3>Back-end</h3>
       <ul class="cv-tags">
         <li>Java</li>
-        <li>Spring</li>
-        <li>JHipster</li>
+        <li>Spring Boot</li>
         <li>JAX-RS (Javax RS)</li>
         <li>APIs REST</li>
+        <li>Hibernate</li>
+        <li>EJB</li>
+        <li>JHipster</li>
         <li>JSON</li>
         <li>PHP</li>
         <li>Laravel</li>
@@ -337,10 +378,11 @@ permalink: /about/
     <div class="cv-group reveal">
       <h3>Dados e integração</h3>
       <ul class="cv-tags">
-        <li>Bancos de dados relacionais</li>
-        <li>SQL</li>
+        <li>PostgreSQL</li>
+        <li>MySQL</li>
+        <li>PL/SQL</li>
         <li>Modelagem de dados</li>
-        <li>Mensageria (RabbitMQ)</li>
+        <li>RabbitMQ</li>
       </ul>
     </div>
 
@@ -360,8 +402,12 @@ permalink: /about/
       <ul class="cv-tags">
         <li>Design Patterns</li>
         <li>Metodologias ágeis</li>
-        <li>Git / GitHub</li>
+        <li>Testes unitários</li>
+        <li>SonarQube</li>
         <li>Code review</li>
+        <li>Git / GitHub</li>
+        <li>JasperSoft</li>
+        <li>AWS</li>
       </ul>
     </div>
   </section>
@@ -435,6 +481,10 @@ permalink: /about/
       <h3>Bacharelado em Ciência da Computação</h3>
       <p class="cv-job-role">Universidade Federal do Tocantins (UFT)</p>
     </div>
+    <div class="cv-job reveal">
+      <h3>Programação de Computadores</h3>
+      <p class="cv-job-role">IFBA — Instituto Federal da Bahia</p>
+    </div>
   </section>
 
   <!--
@@ -453,8 +503,8 @@ permalink: /about/
     <h2 class="reveal">Idiomas</h2>
     <ul class="cv-tags reveal">
       <li>Português — nativo</li>
-      <li>Inglês — fluente</li>
-      <li>Alemão — fluente</li>
+      <li>Inglês — B2 (avançado)</li>
+      <li>Alemão — B2 (avançado)</li>
     </ul>
   </section>
 
@@ -465,6 +515,7 @@ permalink: /about/
       <li><a href="mailto:hen9@ymail.com">hen9@ymail.com</a></li>
       <li><a href="https://www.linkedin.com/in/carlos-lima-103b83218/" rel="me">LinkedIn</a></li>
       <li><a href="https://github.com/carloshml" rel="me">GitHub</a></li>
+      <li><a href="/assets/Curriculo-Carlos-Lima.pdf" download>Currículo em PDF</a></li>
     </ul>
   </section>
 </div>
