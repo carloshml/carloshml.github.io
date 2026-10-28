@@ -7,3 +7,7 @@ Gemfile
 Gemfile.lock
 node_modules
 package.json
+
+# artefatos locais de preview e render (nao versionar)
+.preview/
+.dsh-office-*/
