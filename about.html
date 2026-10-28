@@ -163,6 +163,16 @@ permalink: /about/
     }
   }
 
+  /* Curriculo impresso ou exportado em PDF: blocos que ainda nao foram
+     rolados nunca podem sair em branco no papel. */
+  @media print {
+    .cv.reveal-active .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
   @media screen and (max-width: 640px) {
     .cv-job-when {
       width: 100%;
