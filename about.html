@@ -4,217 +4,361 @@ title: Um Pouco Sobre mim
 permalink: /about/
 ---
 
-<style type="text/css" media="screen"> 
+<style>
+  .cv {
+    --cv-muted: #6b7280;
+    --cv-line: #e5e7eb;
+    --cv-chip-bg: #f6f7f9;
+    --cv-text: #374151;
+  }
 
-    .animation {
-        opacity: 0;
-        margin-left: 8%;
-        transition: all 1.5s;
-        background: none;
+  .cv section {
+    margin: 0 0 2.4em;
+  }
+
+  .cv h2 {
+    margin: 0 0 1.2em;
+    padding-bottom: .5em;
+    border-bottom: 1px solid var(--cv-line);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--cv-muted);
+  }
+
+  .cv h3 {
+    margin: 1.4em 0 .6em;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--cv-text);
+  }
+
+  .cv p {
+    margin: 0 0 1em;
+  }
+
+  .cv ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .cv li {
+    margin: .3em 0;
+  }
+
+  /* Tags de skills e idiomas */
+  .cv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cv-tags li {
+    margin: 0;
+    padding: 4px 12px;
+    border: 1px solid var(--cv-line);
+    border-radius: 999px;
+    background: var(--cv-chip-bg);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--cv-text);
+  }
+
+  /* Experiência profissional */
+  .cv-job {
+    padding-bottom: 1.3em;
+    margin-bottom: 1.3em;
+    border-bottom: 1px dashed var(--cv-line);
+  }
+
+  .cv-job:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .cv-job-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2px 14px;
+  }
+
+  .cv-job-header h3 {
+    margin: 0;
+    font-size: 17px;
+    color: #222;
+  }
+
+  .cv-job-when {
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--cv-muted);
+  }
+
+  .cv-job-role {
+    margin: .2em 0 .5em;
+    font-size: 15px;
+    color: var(--cv-muted);
+  }
+
+  .cv-job-desc {
+    margin: 0;
+    font-size: 17px;
+  }
+
+  /* Contato */
+  .cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cv-contact li {
+    margin: 0;
+  }
+
+  /* Reveal ao rolar: o conteudo so e escondido quando o JS esta ativo
+     (classe reveal-active), para a pagina continuar legivel sem JS. */
+  .cv.reveal-active .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .45s ease, transform .45s ease;
+  }
+
+  .cv.reveal-active .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv.reveal-active .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
+  }
 
-    .com-animacao {
-        animation: animacao-1 2s;
+  @media screen and (max-width: 640px) {
+    .cv-job-when {
+      width: 100%;
     }
-
-    @keyframes animacao-1 {
-        from {
-            margin-left: 0;
-            opacity: 0;
-        }
-
-        to {
-            margin-left: 8%;
-            opacity: 1;
-        }
-    }
-
-    fieldset {
-        margin: 8px 0;
-        border: 1px solid white;
-    }
-
-    .detalhe {
-        opacity: 0;       
-        transition: all 1.5s;
-    }  
-
-    .container-1 {
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .row {
-        flex-direction: row;
-    }
-
-    .item {
-        /* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
-        flex: 1;
-        margin: 5px;
-        border-bottom: 3px solid #ffd9b8;
-        border-radius: 20%;
-        text-align: center;
-        color: #867f7f;
-        font-weight: bold;
-    }
+  }
 </style>
+
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var root = document.querySelector(".cv");
+    var elements = document.querySelectorAll(".cv .reveal");
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function respondToVisibility(element, callback) {
-        new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.intersectionRatio > 0) {
-                    callback(element);
-                    console.log('  022222 ', element);
-                    element.style.display = 'block';
-                    element.classList.add("com-animacao");
-                    element.style.opacity = 1;
-                    setTimeout(() => {
-                        calldetail(element.id);
-                    }, 100);
-                    observer.disconnect();
-                }
-            });
-        }).observe(element);
-        if (!callback) return new Promise(r => callback = r);
+    if (!root || !("IntersectionObserver" in window) || reduceMotion) {
+      return;
     }
 
-    function calldetail(elementid) {
-        console.log(' elementid ', elementid);
-        const id = "#" + 'detalhe-' + (elementid).split('-')[1];
-        console.log(' id  :: ', id);
-        const detalhes = document.querySelectorAll(id);
-        console.log(' detalhes  :: ', detalhes);
-        if (detalhes[0]) {
-            detalhes[0].style.opacity = 1;
-            detalhes[0].style.display = 'block';
-            detalhes[0].classList.add("com-animacao");
-            
-
-        }
+    // O que ja esta na tela no carregamento aparece direto, sem piscar.
+    for (var j = 0; j < elements.length; j++) {
+      if (elements[j].getBoundingClientRect().top < window.innerHeight) {
+        elements[j].classList.add("is-visible");
+      }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const animatedElements = document.querySelectorAll(".animation");
-        for (let index = 0; index < animatedElements.length; index++) {           
-            animatedElements[index].classList.remove("com-animacao");
-            respondToVisibility(animatedElements[index], () => { console.log(' oi') })
+    root.classList.add("reveal-active");
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
-    });
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -40px 0px" });
+
+    for (var i = 0; i < elements.length; i++) {
+      observer.observe(elements[i]);
+    }
+  });
 </script>
-<section>
-    <p>
-        Sou graduado em Ciência da Computação, pela Universidade Federal do Tocantins.
-        Acredito que tecnologia é feita por pessoas e para pessoas, então acho importante o trabalho em equipe e a
-        comunicação.
-    </p>
-    <p>
-        Atualmente trabalho como Full-Stack usando Java e Angular.
-        Possuo experiência com linguagens back-end, como PHP e Java, usando para construção de APIs. No front-end já
-        tenho experiência de 7 anos usando Angular.
-    </p>
-    <p>
-        Trabalho com diversos bancos de dados, gosto de Design Pattern e metodologias ágeis.
-        Como todo profissional de T.I. gosto muito de descobrir novidades e procuro me aprofundar nas tecnologias que me
-        são mais necessárias no momento.
-    </p>
-</section>
-<section>
-    <h4>Soft skills</h4>
-    <div class="container-1 row">
-        <h5 class="item">
-            Autodidata
-        </h5>
-        <h5 class="item">
-            Comunicativo
-        </h5>
-        <h5 class="item">
-            Empenhado
-        </h5>
-    </div>
-</section>
 
-<section>
-    <h4>Skills</h4>
-    <fieldset>
-        <legend class="animation ">JAVA/Javax rs/Spring</legend>
-    </fieldset>
-    <fieldset>
-        <legend class="animation ">REST/API/JSON</legend>
-    </fieldset>
-    <fieldset>
-        <legend class="animation ">JavaScript/Angular</legend>
-    </fieldset>
-    <fieldset>
-        <legend class="animation ">HTML/CSS</legend>
-    </fieldset>
+<div class="cv">
+  <section class="reveal">
+    <p>
+      Sou graduado em Ciência da Computação pela Universidade Federal do Tocantins e trabalho
+      com desenvolvimento de software desde 2017. Acredito que tecnologia é feita por pessoas e
+      para pessoas, então valorizo trabalho em equipe e comunicação tanto quanto a parte técnica.
+    </p>
+    <p>
+      Hoje atuo como desenvolvedor Full-Stack com <strong>Java</strong> e <strong>Angular</strong>:
+      construo APIs REST com Spring e JAX-RS, cuido da modelagem e da manutenção de bancos de dados
+      relacionais e desenvolvo a interface do usuário. Já são 7 anos de experiência com Angular e
+      uma bagagem anterior com PHP e Java no back-end.
+    </p>
+    <p>
+      Uso <strong>IA no dia a dia de desenvolvimento</strong>: trabalho com IDEs agênticas e agentes
+      de código — hoje principalmente o <strong>Kiro</strong> e o <strong>DeepSeek Harness</strong> —
+      para analisar código, implementar mudanças e revisar soluções, sempre lendo criticamente o que
+      a ferramenta propõe. Também gosto de Design Patterns, de metodologias ágeis e de me aprofundar
+      nas tecnologias que o projeto atual exige.
+    </p>
+  </section>
 
-</section>
-<section>
-    <h4>Experiência:</h4>
-    <fieldset>
-        <legend id="empresa-1" class="animation">
-            <strong> qAtive Tecnologia </strong>
-        </legend>
-        <div id="detalhe-1" class="detalhe">
-            07/2017 - 09/2017
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend id="empresa-2" class="animation ">
-            <strong>ViaTech Informática</strong>
-        </legend>
-        <div id="detalhe-2" class="detalhe">
-            10/2017 - 08/2021
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend id="empresa-3" class="animation ">
-            <strong>Capgemini</strong>
-        </legend>
-        <div id="detalhe-3" class="detalhe">
-            09/2021 - 11/2022
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend id="empresa-4" class="animation ">
-            <strong>
-                Coopersystem
-            </strong>
-        </legend>
-        <div id="detalhe-4" class="detalhe">
-            11/2022 - 06/2024
-        </div>
-    </fieldset>
-       <fieldset>
-        <legend id="empresa-5" class="animation ">
-            <strong>
-                FSBR - Fábrica de Software do Brasil
-            </strong>
-        </legend>
-        <div id="detalhe-5" class="detalhe">
-            06/2024 -HOJE
-        </div>
-    </fieldset>
-</section>
-<section id="idiomas">
-    <h4>Idiomas:</h4>
-    <fieldset>
-        <legend class="animation ">Alemão: Fluente</legend>
-    </fieldset>
-    <fieldset>
-        <legend class="animation ">Inglês : Fluente</legend>
-    </fieldset>
-</section>
-<hr>
-<footer>
-    contato:
-    <div>
-        <a href="mailto:carlos-henrique-ml@hotmail.com">carlos-henrique-ml@hotmail.com</a>
+  <section class="reveal">
+    <h2>Skills</h2>
+
+    <h3>Back-end</h3>
+    <ul class="cv-tags">
+      <li>Java</li>
+      <li>Spring</li>
+      <li>JAX-RS (Javax RS)</li>
+      <li>APIs REST</li>
+      <li>JSON</li>
+      <li>PHP</li>
+      <li>Laravel</li>
+      <li>Node.js</li>
+    </ul>
+
+    <h3>Front-end</h3>
+    <ul class="cv-tags">
+      <li>Angular</li>
+      <li>TypeScript</li>
+      <li>JavaScript</li>
+      <li>HTML</li>
+      <li>CSS / SCSS</li>
+    </ul>
+
+    <h3>Dados e integração</h3>
+    <ul class="cv-tags">
+      <li>Bancos de dados relacionais</li>
+      <li>SQL</li>
+      <li>Modelagem de dados</li>
+      <li>Mensageria (RabbitMQ)</li>
+    </ul>
+
+    <h3>IA e produtividade</h3>
+    <ul class="cv-tags">
+      <li>Kiro (IDE agêntica)</li>
+      <li>DeepSeek Harness</li>
+      <li>Agentes de código</li>
+      <li>Modelos de linguagem (LLMs)</li>
+      <li>Engenharia de prompt</li>
+    </ul>
+
+    <h3>Práticas e ferramentas</h3>
+    <ul class="cv-tags">
+      <li>Design Patterns</li>
+      <li>Metodologias ágeis</li>
+      <li>Git / GitHub</li>
+      <li>Code review</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2>Experiência</h2>
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>FSBR — Fábrica de Software do Brasil</h3>
+        <span class="cv-job-when">06/2024 – atual</span>
+      </div>
+      <p class="cv-job-role">Desenvolvedor Full-Stack</p>
+      <p class="cv-job-desc">
+        Desenvolvimento full-stack com Java/Spring e Angular, construção e manutenção de APIs REST.
+        Uso diário do <strong>Kiro</strong>, IDE agêntica, e do <strong>DeepSeek Harness</strong> no
+        fluxo de análise, implementação e revisão de código.
+      </p>
     </div>
-    <div>
-        <a href="mailto:hen9@ymail.com">hen9@ymail.com</a>
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>Coopersystem</h3>
+        <span class="cv-job-when">11/2022 – 06/2024</span>
+      </div>
+      <p class="cv-job-role">Desenvolvedor Full-Stack</p>
+      <p class="cv-job-desc">
+        Desenvolvimento de aplicações com Java e Angular, APIs REST e integração com bancos de dados relacionais.
+      </p>
     </div>
-</footer>
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>Capgemini</h3>
+        <span class="cv-job-when">09/2021 – 11/2022</span>
+      </div>
+      <p class="cv-job-role">Desenvolvedor Full-Stack</p>
+      <p class="cv-job-desc">
+        Desenvolvimento full-stack com Java (JAX-RS/Spring) e Angular, com foco em APIs REST e integração entre sistemas.
+      </p>
+    </div>
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>ViaTech Informática</h3>
+        <span class="cv-job-when">10/2017 – 08/2021</span>
+      </div>
+      <p class="cv-job-role">Desenvolvedor Full-Stack</p>
+      <p class="cv-job-desc">
+        Desenvolvimento de aplicações web e APIs com PHP e Java, front-end em Angular e trabalho
+        com bancos de dados relacionais.
+      </p>
+    </div>
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>qAtive Tecnologia</h3>
+        <span class="cv-job-when">07/2017 – 09/2017</span>
+      </div>
+      <p class="cv-job-role">Desenvolvedor Web</p>
+      <p class="cv-job-desc">
+        Primeira experiência profissional, com desenvolvimento web full-stack.
+      </p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Formação</h2>
+    <div class="cv-job">
+      <h3>Bacharelado em Ciência da Computação</h3>
+      <p class="cv-job-role">Universidade Federal do Tocantins (UFT)</p>
+    </div>
+  </section>
+
+  <!--
+    Cursos e certificações: quando tiver a lista, basta repetir o markup dos blocos acima, por exemplo:
+
+    <div class="cv-job">
+      <div class="cv-job-header">
+        <h3>Nome do curso / certificação</h3>
+        <span class="cv-job-when">Instituição · ano</span>
+      </div>
+    </div>
+  -->
+
+  <section class="reveal">
+    <h2>Idiomas</h2>
+    <ul class="cv-tags">
+      <li>Português — nativo</li>
+      <li>Inglês — fluente</li>
+      <li>Alemão — fluente</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2>Contato</h2>
+    <ul class="cv-contact">
+      <li><a href="mailto:carlos-henrique-ml@hotmail.com">carlos-henrique-ml@hotmail.com</a></li>
+      <li><a href="mailto:hen9@ymail.com">hen9@ymail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/carlos-lima-103b83218/" rel="me">LinkedIn</a></li>
+      <li><a href="https://github.com/carloshml" rel="me">GitHub</a></li>
+    </ul>
+  </section>
+</div>
