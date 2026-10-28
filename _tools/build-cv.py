@@ -45,11 +45,15 @@ EXPERIENCIAS = [
         "cargo": "Desenvolvedor Full Stack",
         "periodo": "junho de 2024 – atual",
         "topicos": [
-            "Desenvolvimento full-stack com Java/Spring e Angular, com JHipster na geração e "
-            "evolução dos projetos.",
-            "Construção e manutenção de APIs REST.",
-            "Uso diário de IDE agêntica (Kiro) e do DeepSeek Harness no fluxo de análise, "
-            "implementação e revisão de código.",
+            "Manutenção e evolução de sistemas legados em Java/JSF, com foco em estabilidade e "
+            "continuidade operacional.",
+            "Evolução do SIMAP (distribuição de processos judiciais): motor de distribuição com "
+            "regras heurísticas e ponderação por vara e por categoria.",
+            "Migração da autenticação de usuários para RH-SSO (Keycloak).",
+            "Integração entre as bases do SIMAP e do PJe para sincronização de processos, com "
+            "Spring Batch e scripts SQL em PostgreSQL.",
+            "Desenvolvimento full-stack com Java/Spring e Angular (JHipster); uso diário de Kiro e "
+            "DeepSeek Harness.",
         ],
     },
     {
@@ -153,7 +157,7 @@ def paragrafo_centro(doc, texto, tamanho=10.5, negrito=False, espaco_depois=0):
 
 def titulo_secao(doc, texto):
     p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(6)
+    p.paragraph_format.space_before = Pt(5)
     p.paragraph_format.space_after = Pt(4)
     run = p.add_run(texto)
     run.bold = True
@@ -177,16 +181,16 @@ def montar():
     secao = doc.sections[0]
     secao.page_width = Cm(21)
     secao.page_height = Cm(29.7)
-    secao.top_margin = Cm(1.4)
-    secao.bottom_margin = Cm(1.4)
+    secao.top_margin = Cm(1.15)
+    secao.bottom_margin = Cm(1.15)
     secao.left_margin = Cm(1.7)
     secao.right_margin = Cm(1.7)
 
     estilo = doc.styles["Normal"]
     estilo.font.name = "Calibri"
     estilo.font.size = Pt(10)
-    estilo.paragraph_format.space_after = Pt(2.5)
-    estilo.paragraph_format.line_spacing = 1.05
+    estilo.paragraph_format.space_after = Pt(2)
+    estilo.paragraph_format.line_spacing = 1.0
 
     # Cabecalho
     paragrafo_centro(doc, NOME, tamanho=17, negrito=True, espaco_depois=1)
